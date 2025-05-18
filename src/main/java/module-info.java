@@ -3,6 +3,6 @@ module lk.ijse.project.ticTacToeGame {
     requires javafx.fxml;
 
 
-    opens lk.ijse.project.ticTacToeGame to javafx.fxml;
-    exports lk.ijse.project.ticTacToeGame;
+    opens lk.ijse.project.ticTacToeGame.Controller to javafx.fxml;
+    exports lk.ijse.project.ticTacToeGame.Controller;
 }
