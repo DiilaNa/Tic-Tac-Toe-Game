@@ -27,13 +27,12 @@ public class LoginController {
     @FXML
     void playAction(ActionEvent event) {
         String playerName = name.getText();
-
         if (playerName.isEmpty()) {
             new Alert(Alert.AlertType.ERROR, "Please enter your name", ButtonType.OK).show();
         }else {
             try {
                 Util.name = playerName;
-                FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/view/tictactoe.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/View/ticTacToe.fxml"));
                 Parent root = fxmlLoader.load();
                 Scene scene = new Scene(root);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
