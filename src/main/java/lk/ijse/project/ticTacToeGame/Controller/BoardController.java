@@ -2,10 +2,19 @@ package lk.ijse.project.ticTacToeGame.Controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import lk.ijse.project.ticTacToeGame.Util.Util;
 
-public class BoardController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class BoardController implements Initializable {
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        userName.setText(Util.name.toUpperCase());
+    }
 
     @FXML
     private Button b1;
