@@ -144,7 +144,12 @@ public class BoardController implements Initializable, BoardUI {
 
     @Override
     public void NotifyWinner(Piece winner) {
-
+        String name = Util.name.toUpperCase();
+        if (winner == Piece.X) {
+            new Alert(Alert.AlertType.INFORMATION , (name + " You Won The Game!!")).show();
+        }else {
+            new Alert(Alert.AlertType.INFORMATION , (name + " You Lost The Game!!")).show();
+        }
     }
 
     private Button getButtonByPosition(int row, int col) {
