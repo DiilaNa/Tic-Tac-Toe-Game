@@ -74,11 +74,26 @@ public class BoardController implements Initializable, BoardUI {
 
     @Override
     public void updateBoard(int row, int col, boolean isHuman) {
-
+        String symbol = isHuman ? "X" : "O";
+        Button button = getButtonByPosition(row, col);
+        button.setText(symbol);
     }
 
     @Override
     public void NotifyWinner(Piece winner) {
 
+    }
+
+    private Button getButtonByPosition(int row, int col) {
+        if (row == 0 && col == 0) return one;
+        if (row == 0 && col == 1) return two;
+        if (row == 0 && col == 2) return three;
+        if (row == 1 && col == 0) return four;
+        if (row == 1 && col == 1) return five;
+        if (row == 1 && col == 2) return six;
+        if (row == 2 && col == 0) return seven;
+        if (row == 2 && col == 1) return eight;
+        if (row == 2 && col == 2) return nine;
+        return null;
     }
 }
