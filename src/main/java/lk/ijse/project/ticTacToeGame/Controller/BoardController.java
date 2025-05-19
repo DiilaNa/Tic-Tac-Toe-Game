@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.GridPane;
 import lk.ijse.project.ticTacToeGame.Game.*;
 import lk.ijse.project.ticTacToeGame.Util.Util;
 
@@ -72,7 +73,66 @@ public class BoardController implements Initializable, BoardUI {
 
     @FXML
     void buttonAction(ActionEvent event) {
+        Button button = (Button) event.getSource();
+        int row = GridPane.getRowIndex(button);
+        int col = GridPane.getColumnIndex(button);
 
+        if (!button.getText().isEmpty()) {
+            showAlert("Invalid Move", "You already clicked this cell!");
+            return;
+        }
+
+        // Human move
+        if (!isGameOver) {
+            if (board.isLegalMove(row, col)) {
+                human.move(row, col);
+                updateBoard(row, col, true); // Update UI for human move
+
+                // Check for a winner after human's move
+                if (board.checkWinner() != null) {
+                    isGameOver = true;
+                    NotifyWinner(Piece.X); // Human is X
+                    return; // End the game if there's a winner
+                }
+
+                // Check for a draw
+                if (isBoardFull()) {
+                    isGameOver = true;
+                    showAlert("Match Drawn!", "The game has ended in a draw.");
+                    return; // End the game if it's a draw
+                }
+
+                // AI move
+                aiPlayer.findBestMove();
+                Piece[][] pieces = board.getPieces(); // Get updated board after AI move
+
+                // Find where AI placed its move and update UI
+                for (int i = 0; i < pieces.length; i++) {
+                    for (int j = 0; j < pieces[i].length; j++) {
+                        if (pieces[i][j] == Piece.O && !getButtonByPosition(i, j).getText().equals("O")) {
+                            updateBoard(i, j, false); // Update UI for AI move
+                            break;
+                        }
+                    }
+                }
+
+                // Check for a winner after AI's move
+                if (board.checkWinner() != null) {
+                    NotifyWinner(Piece.O); // AI is O
+                    isGameOver = true;
+                    return; // End the game if there's a winner
+                }
+
+                // Check for a draw after AI's move
+                if (isBoardFull()) {
+                    isGameOver = true;
+                    showAlert("Match Drawn!", "The game has ended in a draw.");
+                    return; // End the game if it's a draw
+                }
+            }
+        } else {
+            System.out.println("Game Over");
+        }
     }
 
     @Override
