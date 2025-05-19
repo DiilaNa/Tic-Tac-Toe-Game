@@ -3,6 +3,7 @@ package lk.ijse.project.ticTacToeGame.Controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import lk.ijse.project.ticTacToeGame.Game.*;
@@ -119,5 +120,12 @@ public class BoardController implements Initializable, BoardUI {
             }
         }
         return true; // All cells are filled
+    }
+    private void showAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }
