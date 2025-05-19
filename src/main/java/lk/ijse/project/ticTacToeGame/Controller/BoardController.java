@@ -64,6 +64,7 @@ public class BoardController implements Initializable, BoardUI {
 
     @FXML
     void ButtonAction(ActionEvent event) {
+        resetButtons();
         board.resetPieces();
         isGameOver = false;
     }
@@ -96,5 +97,16 @@ public class BoardController implements Initializable, BoardUI {
         if (row == 2 && col == 1) return eight;
         if (row == 2 && col == 2) return nine;
         return null;
+    }
+    public void resetButtons() {
+        one.setText("");
+        two.setText("");
+        three.setText("");
+        four.setText("");
+        five.setText("");
+        six.setText("");
+        seven.setText("");
+        eight.setText("");
+        nine.setText("");
     }
 }
