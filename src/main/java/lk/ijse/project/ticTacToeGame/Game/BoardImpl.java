@@ -49,7 +49,7 @@ public class BoardImpl implements Board {
         pieces[row][col] = piece;
     }
 
-   /* @Override
+    @Override
     public Winner checkWinner() {
         for (int i = 0; i < 3; i++) {
             if (pieces[i][0] == pieces[i][1] && pieces[i][0] == pieces[i][2] && pieces[i][0] != Piece.EMPTY) {
@@ -67,7 +67,6 @@ public class BoardImpl implements Board {
         }
         return null;
     }
-*/
     @Override
     public void printBoard() {
         for (int i = 0; i < 3; i++) {

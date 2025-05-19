@@ -57,7 +57,7 @@ public class AiPlayer extends Player {
     // Minimax algorithm to evaluate the board and find the optimal move
     private int minimax(Piece[][] pieces, int depth, boolean isMaximizing) {
         // Check if the game has a winner or is a draw
-       /* Winner winner = board.checkWinner();
+        Winner winner = board.checkWinner();
         if (winner != null) {
             // Return score based on who won; smaller depth values are prioritized
             if (winner.getWinningPiece() == Piece.O) {
@@ -65,7 +65,7 @@ public class AiPlayer extends Player {
             } else if (winner.getWinningPiece() == Piece.X) {
                 return depth - 10; // Opponent wins, with lower scores for faster losses
             }
-        }*/
+        }
 
         // If the board is full and there's no winner, it's a draw
         if (board.isBoardFull()) {
