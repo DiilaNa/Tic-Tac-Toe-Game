@@ -64,7 +64,8 @@ public class BoardController implements Initializable, BoardUI {
 
     @FXML
     void ButtonAction(ActionEvent event) {
-
+        board.resetPieces();
+        isGameOver = false;
     }
 
     @FXML
