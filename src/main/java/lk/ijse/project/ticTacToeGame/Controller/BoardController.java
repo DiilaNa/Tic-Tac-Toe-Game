@@ -109,4 +109,15 @@ public class BoardController implements Initializable, BoardUI {
         eight.setText("");
         nine.setText("");
     }
+    private boolean isBoardFull() {
+        Piece[][] pieces = board.getPieces(); // Assuming this method gets the current state of the board
+        for (int i = 0; i < pieces.length; i++) {
+            for (int j = 0; j < pieces[i].length; j++) {
+                if (pieces[i][j] == Piece.EMPTY) { // Assuming EMPTY is a constant representing an empty cell
+                    return false; // If any cell is empty, the board is not full
+                }
+            }
+        }
+        return true; // All cells are filled
+    }
 }
